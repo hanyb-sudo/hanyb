@@ -1,0 +1,14 @@
+# 编码
+#写二进制文件必须要进行编码
+path="file.txt"
+
+with open(path,"wb") as f1:
+    str="hanyb韩 is a good boy!"
+    f1.write(str.encode("utf-8"))
+
+# 解码
+with open(path,"rb") as f2:
+    data=f2.read()
+    print(data)
+    newData=data.decode("utf-8")
+    print(newData)

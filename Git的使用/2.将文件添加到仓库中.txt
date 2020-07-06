@@ -1,0 +1,7 @@
+1、在仓库目录中创建一个hanyb.txt文件，添加内容“hanyb is a good man！”
+
+2、把文件添加到仓库
+git  add   hanyb.txt
+
+3、把文件提交到仓库
+git   commit   -m   "注释信息"

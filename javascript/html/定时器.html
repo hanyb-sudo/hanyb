@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<button onclick="func1()">清除计时器</button>
+<button onclick="func2()">新的计时器</button>
+<!--
+<script type="text/javascript">
+    //每两秒打印一次
+    var time = window.setInterval(function(){
+        console.log("hanyb is very good!")
+
+    },2000)
+    function func1(){
+    //清除定时器
+        window.clearInterval(time)
+    }
+
+    function func2(){
+     var time = window.setInterval(function(){
+        console.log("hanyb is very good!")
+    },2000)
+    }
+</script>
+-->
+<script type="text/javascript">
+    //延时计时器，3秒之后执行
+    var time = window.setTimeout(function(){
+        console.log("hanyb is a good boy!")
+    }, 3000)
+</script>
+</body>
+</html>

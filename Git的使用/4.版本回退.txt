@@ -1,0 +1,11 @@
+1、回退到上一版本
+git reset --hard HEAD^
+
+2、回退到上上版本
+git reset --hard HEAD^^
+
+3、回退到上100个版本
+git reset --hard HEAD~100
+
+4、回退到具体版本
+git reset --hard 具体版本号（commit对应的版本号）

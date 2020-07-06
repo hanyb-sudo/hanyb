@@ -1,0 +1,50 @@
+1、进入到python shell
+在项目的目录下
+执行<python manage.py shell>
+
+2、引入包
+from myApp.models import Grades,Student
+from django.utils import timezone
+from datetime import *
+
+3、查询所有数据
+类名.objects.all()
+Grades.objects.all()
+
+4、添加数据
+本质：创建一个模型类的对象实例
+grade1 = Grades()
+grade1.gname = "python_01"
+grade1.gdate = datetime(year=2017,month=6,day=1)
+grade1.ggirlnum = 20
+grade1.gboynum = 20
+grade1.isDelete = False
+ grade1.save()#将数据保存进数据库
+
+5、查看某个对象
+Grades.objects.get(pk=)
+
+6、修改数据
+模型对象.属性 = 新值
+模型对象.save()
+eg:
+grade1.ggirlnum = 30
+grade1.save()
+
+7、删除数据
+模型对象.delete()
+注意：物理删除，数据库中的表里的数据被删除了
+
+8、关联对象
+stu = Student()
+stu.sname = "严言"
+stu.sgender = False
+stu.sage = 20
+stu.scontend = "我叫严言"
+stu.sgrade = grade1
+stu.save()
+查看关联的情况：对象名.关联的类名小写_set.all()
+	          grade1.student_set.all()
+需求：创建人名，属于1班级   
+grade1.student_set.create(sname = "韩寒",sgender = True, sage = 34, scontend = "我是韩寒")
+注意：直接添加到数据库中了    

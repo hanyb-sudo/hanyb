@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>学生分页显示</title>
+</head>
+<body>
+    <u1>
+        {% for stu in students%}
+        <li>
+            {{stu.sname}}-----{{stu.sgrade}}
+        </li>
+        {% endfor%}
+    </u1>
+    <u1>
+        {% for index in students.paginator.page_range%}
+        {% if index == students.number %}
+            {{index}}
+        {% else %}
+            <a href="/hanyb/studentpage/{{index}}/">{{index}}</a>
+        {% endif %}
+
+        {% endfor %}页
+    </u1>
+</body>
+</html>

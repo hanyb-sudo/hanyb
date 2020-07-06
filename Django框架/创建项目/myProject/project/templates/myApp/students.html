@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>学生信息</title>
+</head>
+<body>
+<h1>学生信息</h1>
+    <ul>
+    {%for student in students%}
+    {% if forloop.counter|divisibleby:2%}
+    <li style="color:red">
+        <a>第{{forloop.counter}}次循环--{{student.sname}}----{{student.scontend}}</a>
+    </li>
+    {% else %}
+    <li style="color:blue">
+        <a>第{{forloop.counter}}次循环--{{student.sname}}----{{student.scontend}}</a>
+    </li>
+    {%endif%}
+    {%empty%}
+        <hl>目前没有学生</hl>
+    {%endfor%}
+    </ul>
+
+    <h1>{{str|upper}}</h1>
+    <h2>{{list|join:'#'}}</h2>
+    <u2>{{test|default:'没有'}}</u2>
+
+    <h1>num = {{num}}</h1>
+    <h1>num = {{num|add:10}}</h1>
+    <h1>num = {{num|add:-10}}</h1>
+    <h1>num = {% widthratio num 1 5%}</h1>
+    <h1>num = {% widthratio num 5 1%}</h1>
+
+    {{code}}
+    {{code|escape}}
+    {{code|safe}}
+    {% autoescape off %}
+    {{code}}
+    {% endautoescape %}
+</body>
+</html>

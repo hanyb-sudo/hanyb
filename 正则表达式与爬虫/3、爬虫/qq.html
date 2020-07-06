@@ -1,0 +1,747 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head><title>
+	成都理工大学学士学位论文管理系统
+</title><link href="CSS/ASPNET2BaseCss.css" rel="stylesheet" type="text/css" />
+    <script type="text/javascript" src="JavaScript/flashobject.js"></script>
+    <style type="text/css">
+<!--
+body {
+	margin-left: 0px;
+	margin-top: 0px;
+	margin-right: 0px;
+	margin-bottom: 0px;
+	background-image: url(images/index/index_01.jpg);
+}
+.STYLE1 {
+	color: #FFFFFF;
+	font-size: 14px;
+}
+.STYLE2 {
+	color: #000000;
+	font-size: 12px;
+}
+.STYLE3 {color: #000000; font-size: 12px; font-weight: bold; }
+.STYLE5 {font-size: 12px;line-height:28px;}
+.STYLE6 {color: #FF6600}
+.STYLE7 {color: #FFFFFF; font-size: 12px; font-weight: bold; }
+-->
+</style>
+    <script type="text/javascript">
+        function OnChang() {
+            var LinkUrl = document.getElementById("Link");
+            var Url = LinkUrl.options[LinkUrl.selectedIndex].value;
+            if (Url != "") {
+                window.open("Http://" + Url);
+            }
+        }
+        function YanZheng() {
+            var UserId = document.getElementById("UserId").value;
+            var Pwd = document.getElementById("Pwd").value;
+            if (UserId == "") {
+                alert("请输入用户名");
+                return false;
+            }
+            if (Pwd == "") {
+                alert("请输入密码");
+                return false;
+            }
+        }
+    </script>
+</head>
+<body scroll="no">
+    <form name="form1" method="post" action="index.aspx" id="form1">
+<div>
+<input type="hidden" name="__VIEWSTATE" id="__VIEWSTATE" value="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" />
+</div>
+
+<div>
+
+	<input type="hidden" name="__VIEWSTATEGENERATOR" id="__VIEWSTATEGENERATOR" value="90059987" />
+	<input type="hidden" name="__EVENTVALIDATION" id="__EVENTVALIDATION" value="/wEWBQKLxZORCgLr/4HeAgLmmdGVDAL+jNCfDwK4ovrCAcTwyv3tnHR5W8sao8ZnItcAX31r" />
+</div>
+    <table width="935" border="0" align="center" cellpadding="0" cellspacing="0">
+        <tr>
+            <td height="78">
+                <img src="images/index/index_02.jpg" alt="成都理工大学学士学位论文管理系统" />
+                
+            </td>
+        </tr>
+        <tr>
+            <td height="22" background="images/index/index_04.jpg" style="padding-left: 115px">
+                <table>
+                    <tr>
+                        <td align="left" style="width: 811px; height: 15px;">
+                            <marquee onmouseover="this.stop()" onmouseout="this.start()" behavior="scroll" scrollamount="1" scrolldelay="5" align="left" direction="left" style="width: 100%; height: 15px">
+	<font class="STYLE1" style="font-family:宋体; font-size:13px; font-weight:lighter">欢迎访问成都理工大学毕业论文管理系统！</font>
+	</marquee>
+                        </td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+    </table>
+    <table width="934" border="0" align="center" cellpadding="0" cellspacing="0" bgcolor="#FFFFFF">
+        <tr>
+            <td colspan="4" bgcolor="#FFFFFF" style="height: 10px">
+                <img src="images/index/lianjie.gif" width="14" height="10" />
+            </td>
+        </tr>
+        <tr>
+            <td valign="top" style="width: 698px">
+                <table width="100" border="0" cellspacing="0" cellpadding="0">
+                    <tr>
+                        <td background="images/index/index_06.jpg" style="height: 28px">
+                            <table>
+                                <tr>
+                                    <td style="width: 637px; height: 21px">
+                                    </td>
+                                    <td width="50" style="height: 21px; cursor: hand" onclick="javascript:window.open('MoreNews.aspx?NewsType=R9u4SX1/ey7jjTXZioS1mQ....&TypeName=faJ/BQXSyyhGdQeCi0kmXQ....')">
+                                    </td>
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td valign="middle" background="images/index/index_10.jpg" style="height: 148px">
+                            <table width="98%" border="0" align="center" cellpadding="0" cellspacing="0">
+                                <tr>
+                                    <td valign="top">
+                                        <table width="100%" border="0" align="center" cellpadding="0" cellspacing="0">
+                                            <tr>
+                                                <td width="224" align="center" valign="middle" background="images/index/tu.jpg" height="133">
+                                                    <script type='text/javascript'>
+            var focus_width=216;var focus_height=112;var text_height=18;var swf_height = focus_height+text_height;var pics = '';var links = '';var texts = '';
+            function ati(url, img, title){if(pics != ''){pics = '|' + pics;links = '|' +links;texts = '|' + texts;}pics = escape(img) + pics;links = escape(url) + links;texts = title + texts;}
+            ati('ShowNews.aspx?NewsNo=K3gaVqxHd5N27QWF/dIcdw....', 'NewsImages/426998.jpg', '关于表彰2013年优秀本科毕...');ati('ShowNews.aspx?NewsNo=64xkor3M+Dbo9HC2mxytlw....', 'NewsImages/499713.jpg', '学士学位论文管理系统介绍-p...');
+	        document.write('<embed src="Images/Slideviewer1.swf" wmode="opaque" FlashVars="pics='+pics+'&links='+links+'&texts='+texts+'&borderwidth='+focus_width+'&borderheight='+focus_height+'&textheight='+text_height+'" menu="false" bgcolor="#F7FBFE" quality="high" width="'+ focus_width +'" height="'+ swf_height +'" allowScriptAccess="sameDomain" type="application/x-shockwave-flash"/>');
+                                                    </script>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </td>
+                                    <td width="15">
+                                    </td>
+                                    <td>
+                                        <table width="100%" border="0" align="center" cellpadding="0" cellspacing="0">
+                                            <tr>
+                                                <td width="447" valign="top" background="images/index/new.jpg" style="background-repeat: no-repeat; line-height: 23px; height: 141px;">
+                                                    <table cellpadding="0" cellspacing="0" border="0">
+                                                        <tr>
+                                                            <td height="2" style="width: 3px">
+                                                            </td>
+                                                        </tr>
+                                                    </table>
+                                                    <table id="DongTai" cellspacing="0" border="0" style="width:100%;border-collapse:collapse;">
+	<tr>
+		<td>
+                                                            <table width="98%" border="0" align="left" cellpadding="0" cellspacing="0">
+                                                                <tr>
+                                                                    <td width="14" align="center">
+                                                                        <img src="images/index/20070509090205824.gif" width="7" height="8" />
+                                                                    </td>
+                                                                    <td width="82%" align="left" valign="middle" height="">
+                                                                        <a href="shownews.aspx?newsno=yXB7nD850YsfFB92AwROoA...." title="关于表彰2016年成都理工大学“百篇优秀学士学位论文（设计）”的决定" target="_blank">
+                                                                            关于表彰2016年成都理工大学“百篇优秀学士学位论文（设...
+                                                                        </a>
+                                                                    </td>
+                                                                    <td align="right">
+                                                                        2016-06-20
+                                                                    </td>
+                                                                </tr>
+                                                            </table>
+                                                        </td>
+	</tr><tr>
+		<td>
+                                                            <table width="98%" border="0" align="left" cellpadding="0" cellspacing="0">
+                                                                <tr>
+                                                                    <td width="14" align="center">
+                                                                        <img src="images/index/20070509090205824.gif" width="7" height="8" />
+                                                                    </td>
+                                                                    <td width="82%" align="left" valign="middle" height="">
+                                                                        <a href="shownews.aspx?newsno=DNfCYQYsOCSnY+8t13vrvg...." title="2016年成都理工大学“百篇优秀学士学位论文（设计）”答辩汇报提纲" target="_blank">
+                                                                            2016年成都理工大学“百篇优秀学士学位论文（设计）”答...
+                                                                        </a>
+                                                                    </td>
+                                                                    <td align="right">
+                                                                        2016-06-14
+                                                                    </td>
+                                                                </tr>
+                                                            </table>
+                                                        </td>
+	</tr><tr>
+		<td>
+                                                            <table width="98%" border="0" align="left" cellpadding="0" cellspacing="0">
+                                                                <tr>
+                                                                    <td width="14" align="center">
+                                                                        <img src="images/index/20070509090205824.gif" width="7" height="8" />
+                                                                    </td>
+                                                                    <td width="82%" align="left" valign="middle" height="">
+                                                                        <a href="shownews.aspx?newsno=a+c5/f//pPvw7Qm/gTEnbA...." title="关于发布2014版成都理工大学《学士学位论文（设计）工作指导意见》的通知" target="_blank">
+                                                                            关于发布2014版成都理工大学《学士学位论文（设计）工作...
+                                                                        </a>
+                                                                    </td>
+                                                                    <td align="right">
+                                                                        2014-05-06
+                                                                    </td>
+                                                                </tr>
+                                                            </table>
+                                                        </td>
+	</tr><tr>
+		<td>
+                                                            <table width="98%" border="0" align="left" cellpadding="0" cellspacing="0">
+                                                                <tr>
+                                                                    <td width="14" align="center">
+                                                                        <img src="images/index/20070509090205824.gif" width="7" height="8" />
+                                                                    </td>
+                                                                    <td width="82%" align="left" valign="middle" height="">
+                                                                        <a href="shownews.aspx?newsno=zRdNa6xig5o1n7MN7qg6rg...." title="成都理工大学学士学位论文管理系统快速使用指南" target="_blank">
+                                                                            <font color='red'  onmouseout=javascript:this.color='red' style='font-size:12px;font-weight:inherit;font-family:宋体' onmouseover=javascript:this.color='black'>成都理工大学学士学位论文管理系统快速使用指南</font>
+                                                                        </a>
+                                                                    </td>
+                                                                    <td align="right">
+                                                                        2014-03-20
+                                                                    </td>
+                                                                </tr>
+                                                            </table>
+                                                        </td>
+	</tr><tr>
+		<td>
+                                                            <table width="98%" border="0" align="left" cellpadding="0" cellspacing="0">
+                                                                <tr>
+                                                                    <td width="14" align="center">
+                                                                        <img src="images/index/20070509090205824.gif" width="7" height="8" />
+                                                                    </td>
+                                                                    <td width="82%" align="left" valign="middle" height="">
+                                                                        <a href="shownews.aspx?newsno=64xkor3M+Dbo9HC2mxytlw...." title="学士学位论文管理系统介绍-ppt" target="_blank">
+                                                                            学士学位论文管理系统介绍-ppt
+                                                                        </a>
+                                                                    </td>
+                                                                    <td align="right">
+                                                                        2014-03-19
+                                                                    </td>
+                                                                </tr>
+                                                            </table>
+                                                        </td>
+	</tr>
+</table>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </td>
+                                </tr>
+                                <tr>
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td valign="top" style="height: 138px">
+                            <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                                <tr>
+                                    <td background="images/index/index_11.jpg" height="27">
+                                        <table>
+                                            <tr>
+                                                <td style="width: 289px; height: 21px">
+                                                </td>
+                                                <td style="width: 44px; height: 21px; cursor: hand" onclick="javascript:window.open('MoreNews.aspx?NewsType=0jmLkXW54FOHOqj4OQWN/Q....&TypeName=lijjVwbUs8MKyxdpznBoTA....')">
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </td>
+                                    <td rowspan="3" valign="top">
+                                        <img src="images/index/index_12.jpg" width="8" height="10" />
+                                    </td>
+                                    <td background="images/index/index_13.jpg" height="27">
+                                        <table>
+                                            <tr>
+                                                <td style="width: 289px; height: 21px">
+                                                </td>
+                                                <td style="width: 44px; height: 21px; cursor: hand" onclick="javascript:window.open('MoreNews.aspx?NewsType=JVSN36bnp3Y9C+7TT68NIg....&TypeName=39M6XSJ5UYJo0ZB1Zfn+5Q....')">
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td valign="top" background="images/index/zc_bg.jpg" style="line-height: 17px; height: 232px;">
+                                        <table id="ZhengCe" cellspacing="0" border="0" style="width:100%;border-collapse:collapse;">
+	<tr>
+		<td>
+                                                <table width="98%" border="0" align="left" cellpadding="0" cellspacing="0">
+                                                    <tr>
+                                                        <td width="14" align="center">
+                                                            <img src="images/index/20070509090205824.gif" width="7" height="8" />
+                                                        </td>
+                                                        <td width="75%" align="left" valign="middle">
+                                                            <a href="shownews.aspx?newsno=MX87I+hJrZ85EKiYIeQKWw...." title="学生学士学位论文（设计）编写格式" target="_blank">
+                                                                学生学士学位论文（设计）编写格式
+                                                            </a>
+                                                        </td>
+                                                        <td align="right">
+                                                            2017-05-08
+                                                        </td>
+                                                    </tr>
+                                                </table>
+                                            </td>
+	</tr><tr>
+		<td>
+                                                <table width="98%" border="0" align="left" cellpadding="0" cellspacing="0">
+                                                    <tr>
+                                                        <td width="14" align="center">
+                                                            <img src="images/index/20070509090205824.gif" width="7" height="8" />
+                                                        </td>
+                                                        <td width="75%" align="left" valign="middle">
+                                                            <a href="shownews.aspx?newsno=JLnIE3dt8XREYFb6oO3ysw...." title="《成都理工大学学士学位论文（设计）工作指导意见（试行）》（2014版）" target="_blank">
+                                                                《成都理工大学学士学位论文（设计）工...
+                                                            </a>
+                                                        </td>
+                                                        <td align="right">
+                                                            2014-05-06
+                                                        </td>
+                                                    </tr>
+                                                </table>
+                                            </td>
+	</tr><tr>
+		<td>
+                                                <table width="98%" border="0" align="left" cellpadding="0" cellspacing="0">
+                                                    <tr>
+                                                        <td width="14" align="center">
+                                                            <img src="images/index/20070509090205824.gif" width="7" height="8" />
+                                                        </td>
+                                                        <td width="75%" align="left" valign="middle">
+                                                            <a href="shownews.aspx?newsno=VYXVTTcb4C4JcD9GpE0D3w...." title="2013版本科毕业设计（论文）指导意见" target="_blank">
+                                                                <font color='red'  onmouseout=javascript:this.color='red' style='font-size:12px;font-weight:inherit;font-family:宋体' onmouseover=javascript:this.color='black'>2013版本科毕业设计（论文）指导意...</font>
+                                                            </a>
+                                                        </td>
+                                                        <td align="right">
+                                                            2014-03-17
+                                                        </td>
+                                                    </tr>
+                                                </table>
+                                            </td>
+	</tr>
+</table>
+                                    </td>
+                                    <td valign="top" background="images/index/index_15.jpg" style="line-height: 17px; height: 232px;">
+                                        <table id="LunWen" cellspacing="0" border="0" style="width:100%;border-collapse:collapse;">
+	<tr>
+		<td>
+                                                <table width="98%" border="0" align="left" cellpadding="0" cellspacing="0">
+                                                    <tr>
+                                                        <td width="10" align="center">
+                                                            <img src="images/index/20070509090205824.gif" width="7" height="8" />
+                                                        </td>
+                                                        <td width="78%" align="left" valign="middle">
+                                                            <a href="shownews.aspx?newsno=DYkWlWtiMjebFghAsVR4cg...." title="关于开展2019届学士学位论文（设计）查重检测工作的通知" target="_blank">
+                                                                关于开展2019届学士学位论文（设计...
+                                                            </a>
+                                                        </td>
+                                                        <td align="right">
+                                                            2019-04-30
+                                                        </td>
+                                                    </tr>
+                                                </table>
+                                            </td>
+	</tr><tr>
+		<td>
+                                                <table width="98%" border="0" align="left" cellpadding="0" cellspacing="0">
+                                                    <tr>
+                                                        <td width="10" align="center">
+                                                            <img src="images/index/20070509090205824.gif" width="7" height="8" />
+                                                        </td>
+                                                        <td width="78%" align="left" valign="middle">
+                                                            <a href="shownews.aspx?newsno=//ml2FDZvn3LWwu0g9lOgw...." title="关于做好2018年本科学士学位论文（设计）工作的通知  教通字[2018]6号" target="_blank">
+                                                                关于做好2018年本科学士学位论文（...
+                                                            </a>
+                                                        </td>
+                                                        <td align="right">
+                                                            2018-03-30
+                                                        </td>
+                                                    </tr>
+                                                </table>
+                                            </td>
+	</tr><tr>
+		<td>
+                                                <table width="98%" border="0" align="left" cellpadding="0" cellspacing="0">
+                                                    <tr>
+                                                        <td width="10" align="center">
+                                                            <img src="images/index/20070509090205824.gif" width="7" height="8" />
+                                                        </td>
+                                                        <td width="78%" align="left" valign="middle">
+                                                            <a href="shownews.aspx?newsno=GuXXb76SXD3oupXZiHmu4g...." title="2017年学生有偿检测的使用指南" target="_blank">
+                                                                2017年学生有偿检测的使用指南
+                                                            </a>
+                                                        </td>
+                                                        <td align="right">
+                                                            2017-05-22
+                                                        </td>
+                                                    </tr>
+                                                </table>
+                                            </td>
+	</tr><tr>
+		<td>
+                                                <table width="98%" border="0" align="left" cellpadding="0" cellspacing="0">
+                                                    <tr>
+                                                        <td width="10" align="center">
+                                                            <img src="images/index/20070509090205824.gif" width="7" height="8" />
+                                                        </td>
+                                                        <td width="78%" align="left" valign="middle">
+                                                            <a href="shownews.aspx?newsno=5HA42Uxe7aUXjFnYTwHJdQ...." title="关于启用成都理工大学学士学位论文抄袭检测功能的通知" target="_blank">
+                                                                关于启用成都理工大学学士学位论文抄袭...
+                                                            </a>
+                                                        </td>
+                                                        <td align="right">
+                                                            2017-05-12
+                                                        </td>
+                                                    </tr>
+                                                </table>
+                                            </td>
+	</tr><tr>
+		<td>
+                                                <table width="98%" border="0" align="left" cellpadding="0" cellspacing="0">
+                                                    <tr>
+                                                        <td width="10" align="center">
+                                                            <img src="images/index/20070509090205824.gif" width="7" height="8" />
+                                                        </td>
+                                                        <td width="78%" align="left" valign="middle">
+                                                            <a href="shownews.aspx?newsno=0d9ZtxB7hnVVB1RBmnlOgg...." title="关于对2016届本科生学士学位论文（设计）进行重复率检测的通知" target="_blank">
+                                                                <font color='red'  onmouseout=javascript:this.color='red' style='font-size:12px;font-weight:inherit;font-family:宋体' onmouseover=javascript:this.color='black'>关于对2016届本科生学士学位论文（...</font>
+                                                            </a>
+                                                        </td>
+                                                        <td align="right">
+                                                            2016-05-11
+                                                        </td>
+                                                    </tr>
+                                                </table>
+                                            </td>
+	</tr><tr>
+		<td>
+                                                <table width="98%" border="0" align="left" cellpadding="0" cellspacing="0">
+                                                    <tr>
+                                                        <td width="10" align="center">
+                                                            <img src="images/index/20070509090205824.gif" width="7" height="8" />
+                                                        </td>
+                                                        <td width="78%" align="left" valign="middle">
+                                                            <a href="shownews.aspx?newsno=4K00OnCULGEKKYNdbmwsqQ...." title="关于表彰2015年成都理工大学 “百篇优秀学士学位论文（设计）”的决定" target="_blank">
+                                                                <font color='red'  onmouseout=javascript:this.color='red' style='font-size:12px;font-weight:inherit;font-family:宋体' onmouseover=javascript:this.color='black'>关于表彰2015年成都理工大学 “百...</font>
+                                                            </a>
+                                                        </td>
+                                                        <td align="right">
+                                                            2016-05-11
+                                                        </td>
+                                                    </tr>
+                                                </table>
+                                            </td>
+	</tr><tr>
+		<td>
+                                                <table width="98%" border="0" align="left" cellpadding="0" cellspacing="0">
+                                                    <tr>
+                                                        <td width="10" align="center">
+                                                            <img src="images/index/20070509090205824.gif" width="7" height="8" />
+                                                        </td>
+                                                        <td width="78%" align="left" valign="middle">
+                                                            <a href="shownews.aspx?newsno=RdXwR13ro6iLSxmD4me4/Q...." title="关于公布2014年参加十佳学士学位论文（设计）名单的通知" target="_blank">
+                                                                <font color='red'  onmouseout=javascript:this.color='red' style='font-size:12px;font-weight:inherit;font-family:宋体' onmouseover=javascript:this.color='black'>关于公布2014年参加十佳学士学位论...</font>
+                                                            </a>
+                                                        </td>
+                                                        <td align="right">
+                                                            2014-06-13
+                                                        </td>
+                                                    </tr>
+                                                </table>
+                                            </td>
+	</tr><tr>
+		<td>
+                                                <table width="98%" border="0" align="left" cellpadding="0" cellspacing="0">
+                                                    <tr>
+                                                        <td width="10" align="center">
+                                                            <img src="images/index/20070509090205824.gif" width="7" height="8" />
+                                                        </td>
+                                                        <td width="78%" align="left" valign="middle">
+                                                            <a href="shownews.aspx?newsno=zY7Ybft3cqyx564MfVfI9A...." title="关于2014年优秀学士学位论文（设计）复审答辩安排的通知" target="_blank">
+                                                                <font color='red'  onmouseout=javascript:this.color='red' style='font-size:12px;font-weight:inherit;font-family:宋体' onmouseover=javascript:this.color='black'>关于2014年优秀学士学位论文（设计...</font>
+                                                            </a>
+                                                        </td>
+                                                        <td align="right">
+                                                            2014-06-06
+                                                        </td>
+                                                    </tr>
+                                                </table>
+                                            </td>
+	</tr><tr>
+		<td>
+                                                <table width="98%" border="0" align="left" cellpadding="0" cellspacing="0">
+                                                    <tr>
+                                                        <td width="10" align="center">
+                                                            <img src="images/index/20070509090205824.gif" width="7" height="8" />
+                                                        </td>
+                                                        <td width="78%" align="left" valign="middle">
+                                                            <a href="shownews.aspx?newsno=2hqtC3aUgFeSTsXaRBMf2w...." title="关于学生材料打印的注意事项" target="_blank">
+                                                                关于学生材料打印的注意事项
+                                                            </a>
+                                                        </td>
+                                                        <td align="right">
+                                                            2014-05-28
+                                                        </td>
+                                                    </tr>
+                                                </table>
+                                            </td>
+	</tr><tr>
+		<td>
+                                                <table width="98%" border="0" align="left" cellpadding="0" cellspacing="0">
+                                                    <tr>
+                                                        <td width="10" align="center">
+                                                            <img src="images/index/20070509090205824.gif" width="7" height="8" />
+                                                        </td>
+                                                        <td width="78%" align="left" valign="middle">
+                                                            <a href="shownews.aspx?newsno=1lXCIpHGSbVZICoZtwWWYw...." title="关于使用成都理工大学学士学位论文抄袭检测功能的通知" target="_blank">
+                                                                <font color='red'  onmouseout=javascript:this.color='red' style='font-size:12px;font-weight:inherit;font-family:宋体' onmouseover=javascript:this.color='black'>关于使用成都理工大学学士学位论文抄袭...</font>
+                                                            </a>
+                                                        </td>
+                                                        <td align="right">
+                                                            2014-05-16
+                                                        </td>
+                                                    </tr>
+                                                </table>
+                                            </td>
+	</tr><tr>
+		<td>
+                                                <table width="98%" border="0" align="left" cellpadding="0" cellspacing="0">
+                                                    <tr>
+                                                        <td width="10" align="center">
+                                                            <img src="images/index/20070509090205824.gif" width="7" height="8" />
+                                                        </td>
+                                                        <td width="78%" align="left" valign="middle">
+                                                            <a href="shownews.aspx?newsno=G6EUSpNoMbjsG1mcQu+fPg...." title="关于发布2014版本科毕业设计（论文）指导意见的通知" target="_blank">
+                                                                关于发布2014版本科毕业设计（论文...
+                                                            </a>
+                                                        </td>
+                                                        <td align="right">
+                                                            2014-05-06
+                                                        </td>
+                                                    </tr>
+                                                </table>
+                                            </td>
+	</tr><tr>
+		<td>
+                                                <table width="98%" border="0" align="left" cellpadding="0" cellspacing="0">
+                                                    <tr>
+                                                        <td width="10" align="center">
+                                                            <img src="images/index/20070509090205824.gif" width="7" height="8" />
+                                                        </td>
+                                                        <td width="78%" align="left" valign="middle">
+                                                            <a href="shownews.aspx?newsno=CQ8slg2PShA7xU8T1kUWNw...." title="教学秘书用户手册" target="_blank">
+                                                                教学秘书用户手册
+                                                            </a>
+                                                        </td>
+                                                        <td align="right">
+                                                            2014-03-20
+                                                        </td>
+                                                    </tr>
+                                                </table>
+                                            </td>
+	</tr>
+</table>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td height="2">
+                                        <img src="images/index/index_16.jpg" width="344" height="2" />
+                                    </td>
+                                    <td>
+                                        <img src="images/index/lw_bot.jpg" />
+                                    </td>
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="height: 2px">
+                            <img src="images/index/index_17.jpg" width="700" height="2" />
+                        </td>
+                    </tr>
+                    
+                    
+                </table>
+            </td>
+            <td width="5" valign="top" bgcolor="#FEFEFE">
+                <img src="images/index/index_07.jpg" width="5" height="13" />
+            </td>
+            <td width="224" valign="top">
+                <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                    <tr>
+                        <td>
+                            <img src="images/index/right_01.jpg" width="224" height="36" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td height="118" valign="top" background="images/index/right_02.jpg">
+                            <div id="Panel1">
+	
+                                <table width="94%" border="0" align="center" cellpadding="0" cellspacing="0">
+                                    <tr>
+                                        <td colspan="2">
+                                            &nbsp;
+                                        </td>
+                                        <td width="23%">
+                                            &nbsp;
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td width="22%" class="STYLE2">
+                                            <strong>账 号</strong>
+                                        </td>
+                                        <td width="55%">
+                                            <input name="UserId" type="text" id="UserId" style="border-style:Groove;width:117px;" />
+                                        </td>
+                                        <td rowspan="3" align="center">
+                                            <img src="images/index/login.jpg" width="31" height="40" />
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="2" class="STYLE2">
+                                            <img src="images/index/login_zw.jpg" width="8" height="5" />
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="STYLE3">
+                                            密 码
+                                        </td>
+                                        <td>
+                                            <input name="Pwd" type="password" id="Pwd" autocomplete="off" style="border-style:Groove;width:117px;" />
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="3">
+                                            <span class="STYLE2">
+                                                <img src="images/index/login_zw.jpg" width="8" height="5" /></span><br />
+                                            <span class="STYLE2">
+                                                <img src="images/index/login_zw.jpg" width="8" height="5" /></span>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="3" align="center">
+                                            <input type="image" name="LoginButton" id="LoginButton" src="images/index/queding.jpg" onclick="return YanZheng();" style="border-width:0px;" />
+                                            <img src="images/index/quxiao.jpg" width="49" height="20" onclick="javascript:document.form1.reset();" style="cursor: hand" />
+                                        </td>
+                                    </tr>
+                                </table>
+                            
+</div>
+                            
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <img src="images/index/right_03.jpg" width="224" height="7" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td background="images/index/right_04.jpg" height="26">
+                            <table>
+                                <tr>
+                                    <td style="width: 156px; height: 22px">
+                                    </td>
+                                    <td style="width: 58px; height: 22px; cursor: hand" onclick="javascript:window.open('MoreNews.aspx?NewsType=ckgZZnGn1n+FNr7I9D37tw....&TypeName=xerK5VEToCk77DA+E3u5OQ....')">
+                                    </td>
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td valign="top" background="images/index/right_05.jpg" style="height: 178px; line-height: 20px;">
+                            <table cellpadding="0" cellspacing="0" border="0">
+                                <tr>
+                                    <td height="2">
+                                    </td>
+                                </tr>
+                            </table>
+                            <table id="BiaoGe" cellspacing="0" border="0" style="width:100%;border-collapse:collapse;">
+	<tr>
+		<td>
+                                    <table width="98%" border="0" align="left" cellpadding="0" cellspacing="0">
+                                        <tr>
+                                            <td width="10" align="center">
+                                                <img src="images/index/20070509090205824.gif" width="7" height="8" />
+                                            </td>
+                                            <td width="65%" align="left" valign="middle">
+                                                <a href="shownews.aspx?newsno=lO/Mq+0U8MJt0UfEZD0eug...." title="成都理工大学学生学士学位论文（设计）诚信承诺书" target="_blank">
+                                                    成都理工大学学生学士...
+                                                </a>
+                                            </td>
+                                            <td align="right">
+                                                2014-05-23
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </td>
+	</tr>
+</table>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <img src="images/index/right_06.jpg" width="224" height="6" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td height="66" background="images/index/right_07.jpg">
+                            <table width="96%" border="0" align="center" cellpadding="0" cellspacing="0">
+                                <tr>
+                                    <td colspan="2">
+                                        &nbsp;
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td style="width: 29%">
+                                        &nbsp;
+                                    </td>
+                                    <td width="74%">
+                                        <select name="Link" id="Link" onchange="OnChang()" style="width:130px;">
+	<option selected="selected" value="">&#160;&#160;&#160;----网站链接----</option>
+
+</select>
+                                    </td>
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+                </table>
+            </td>
+            <td width="10" valign="top">
+                <img src="images/index/index_07.jpg" width="5" height="13" />
+            </td>
+        </tr>
+    </table>
+    <table width="935" border="0" align="center" cellpadding="0" cellspacing="0">
+        <tr>
+            <td bgcolor="#FFFFFF" style="height: 5px">
+                <img src="images/index/index_21.jpg" width="3" height="5" />
+            </td>
+        </tr>
+        <tr>
+            <td width="929" background="images/index/index_22.jpg" height="29">
+                <table>
+                    <tr>
+                        <td style="width: 459px; height: 20px">
+                        </td>
+                        <td style="width: 210px; height: 20px; cursor: pointer" onclick="javascript:window.open('http://www.changedu.com')">
+                        </td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+    </table>
+    <table width="935" border="0" align="center" cellpadding="0" cellspacing="0">
+        <tr>
+            <td bgcolor="#FFFFFF" style="height: 30px; text-align: center;">
+                建议使用IE浏览器,若IE浏览器访问出现异常(如：出现乱码或显示不全等)，请启用IE浏览器的兼容性视图，启用兼容性说明：<a href='毕业设计（论文）浏览器兼容性启用说明文件.doc' style='color:Blue; text-decoration:underline;' target='_blank'>点击下载</a>
+            </td>
+        </tr>
+    </table>
+    </form>
+</body>
+</html>

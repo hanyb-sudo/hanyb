@@ -1,0 +1,16 @@
+1、在合适的位置创建一个目录
+
+2、打开黑屏终端进入到上一步创建的目录下
+
+3、输入<django-admin startproject project(项目名)>
+
+4、查看目录层级<tree  .  /F>
+
+5、目录层级说明：
+manager.py：一个命令行工具，可以使我们用多种方式对Django项目进行交互
+project目录
+	__init__.py：一个空文件，它告诉Python这个目录应该被看做一个Python包
+	settings.py：项目的配置文件
+	urls.py：项目的URL声明
+	wsgi.py：项目与WSGI兼容的Web服务器入口
+	asgi.py：项目与ASGI兼容的Web服务器入口

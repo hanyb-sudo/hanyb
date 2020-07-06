@@ -1,0 +1,28 @@
+概述：
+在django中，视图对web请求进行回应
+视图就是一个python函数，在view.py文件中定义
+
+定义视图：
+from django.http import HttpResponse
+def index(request):
+    return HttpResponse("hanyb is good boy!")
+
+配置url：
+修改project目录下的urls.py文件：
+
+from django.contrib import admin
+from django.urls import path,include
+urlpatterns = [
+    path('admin/', admin.site.urls),
+    path('', include('myApp.urls')),
+]
+
+在myApp应用目录下创建一个urls.py文件：
+from . import views
+from django.urls import path,re_path
+#导入正则地址
+urlpatterns = [
+    path(r'', views.index),
+    re_path(r'^(\d+)/$', views.detial1),
+    re_path(r'^(\d+)/(\d+)/$', views.detial2),
+]

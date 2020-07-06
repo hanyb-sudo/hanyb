@@ -1,0 +1,13 @@
+git status
+	该命令可以让我们时刻掌握仓库当前状态
+	修改hanyb.txt文件内容为 hanyb is a good man
+
+git diff
+	该命令可以查看修改的内容
+
+git log
+	该命令可以显示从最近到最远的提交日志
+	修改hanyb.txt文件内容为 hanyb is a handsome man   提交
+git log  --pretty=oneline	精简成一行内容
+
+

@@ -1,0 +1,81 @@
+1、Paginator对象
+1）创建对象
+格式：
+	Paginator(列表，整数)
+返回值：
+	返回的分页对象
+
+2）属性
+count：	对象总数
+number_pages:	页面总数
+page_range：	页码列表[1,2,3,4,5]	页码从1开始
+
+3）方法
+page(num):
+	获得Page对象，如果提供的页码不存在会抛出"InvalidPage"异常
+
+4）异常
+InvalidPage：
+	当向page()传递的是一个无效的页码时抛出
+
+PageNotAnlnteger
+	当向page()传递的不是一个整数时抛出
+
+EmptyPage
+	当向page()传递一个有效值，但是该页面没有数据时抛出
+
+2、Page对象
+1）创建对象
+	Paginator对象的page()方法返回得到Page对象
+	不需要手动创建
+
+2）属性
+object_list		当前页上所有的数据(对象)列表
+number		当前页的页码值
+paginator		当前page对象关联的paginator对象
+
+3）方法
+has_next()		判断是否有下一页，如果有返回True
+has_previous()	判断是否有上一页，如果有返回True
+has_other_pages()	判断是否有上一页或下一页，如果有返回True
+next_page_number()	返回下一页的页码，如果下一页不存在抛出InvalidPage异常
+previous_page_number()	返回上一页的页码，如果下一页不存在抛出InvalidPage异常
+len()		返回当前页的数据(对象)个数
+
+3、Paginator对象与Page对象的关系
+
+4、代码示例：
+1）配置url：
+re_path(r"^studentpage/(\d+)/$", views.studentpage)
+
+2）配置视图：
+#学生分页
+from django.core.paginator import Paginator
+def studentpage(request, page_num):
+    #所有学生列表
+    studentsList = Students.stuObj2.all()
+    paginator = Paginator(studentsList, 4)
+    page = paginator.page(page_num)
+    number = len(page)
+    return render(request, 'myApp/studentpage.html', {"students":page})
+
+3）模板：
+<body>
+    <u1>
+        {% for stu in students%}
+        <li>
+            {{stu.sname}}-----{{stu.sgrade}}
+        </li>
+        {% endfor%}
+    </u1>
+    <u1>
+        {% for index in students.paginator.page_range%}
+        {% if index == students.number %}
+            {{index}}
+        {% else %}
+            <a href="/hanyb/studentpage/{{index}}/">{{index}}</a>
+        {% endif %}
+
+        {% endfor %}页
+    </u1>
+</body>

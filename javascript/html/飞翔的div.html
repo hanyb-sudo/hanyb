@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Fly</title>
+    <style type="text/css">
+        #box{
+            width:100px;
+            height:100px;
+            background-color:red;
+            position:absolute;
+        }
+    </style>
+</head>
+<body style="height:1000px;position:relative;">
+    <div id="box">
+
+    </div>
+    <button onclick="fly()" style="position:absolute;left:50px;top:100px;">fly</button>
+    <button onclick="stop()"style="position:absolute;left:100px;top:100px;">stop</button>
+
+    <script type="text/javascript">
+    var jsDiv = document.getElementById("box");
+
+        function fly(){
+        time = window.setInterval(function(){
+        var left = parseInt(window.getComputedStyle(jsDiv, null).left);
+        //console.log(left)
+        jsDiv.style.left = (left + 5) + "px";
+
+        var top = parseInt(window.getComputedStyle(jsDiv, null).top);
+        //console.log(top)
+        jsDiv.style.top = (top + 5) + "px";
+        },1000)
+        }
+
+        function stop(){
+        window.clearInterval(time)
+    }
+    </script>
+</body>
+</html>

@@ -1,0 +1,71 @@
+概述：
+模板是HTML页面，可以根据视图中传递过来的数据进行填充
+
+创建模板目录：
+创建templates目录，在project目录下(与myApp同级)创建对应的模板目录(project/templates/myApp)
+
+配置模板路径：
+修改settings.py文件下的TEMPLATES
+TEMPLATES = [
+    {
+        'BACKEND': 'django.template.backends.django.DjangoTemplates',
+        'DIRS': [os.path.join(BASE_DIR, 'templates')],
+
+
+定义模板：
+在templates/myApp目录下创建grades.html和students.html文件
+
+模板语法：
+1、{{输出值，可以是变量，也可以是对象属性}}
+2、{%执行代码段%}
+
+
+
+实现http://127.0.0.1:8000/grades展示班级信息：
+
+1）写模板
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>班级信息</title>
+</head>
+<body>
+    <hl>班级信息列表</hl>
+    <ul>
+        {%for grade in grades%}
+        <li>
+            <a href="#">{{grade.gname}}</a>
+        </li>
+        {%endfor%}
+    </ul>
+</body>
+</html>
+
+2）定义视图：
+def grades(request):
+    #去模型里取数据
+    gradesList = Grades.objects.all()
+    #将数据传递给模板，模板再渲染页面，将渲染好的页面返回给浏览器
+    return render(request, 'myApp/grades.html', {"grades":gradesList})
+
+3）配置urls：
+re_path('^grades/$', views.grades)
+
+
+
+需求：
+点击班级，显示班级中的所有学生信息
+1）写模板
+同上
+2）定义视图：
+def grade_students(request, grade_id):
+    #先拿到对应的班级信息
+    grade = Grades.objects.get(pk = grade_id)
+    #再通过班级拿到班级中的学生信息
+    studentsList = grade.student_set.all()
+    # 将数据传递给模板，模板再渲染页面，将渲染好的页面返回给浏览器
+    return render(request, 'myApp/students.html', {"students": studentsList})
+3）配置urls：
+re_path(r'^grades/(\d+)/$', views.grade_students),
+

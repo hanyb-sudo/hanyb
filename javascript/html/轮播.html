@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>轮播</title>
+    <link rel="stylesheet" type="text/css" href="../css/style2.css">
+    <script src="../js/lunbo.js"></script>
+</head>
+<body>
+    <div id="box">
+        <img id="pic" src="../img/0.jpg"/>
+        <ul id="list">
+            <li>1</li>
+            <li>2</li>
+            <li>3</li>
+            <li>4</li>
+            <li>5</li>
+            <li>6</li>
+            <li>7</li>
+            <li>8</li>
+        </ul>
+        <div id="left" class="bt"><</div>
+        <div id="right" class="bt">></div>
+    </div>
+
+    <script type="text/javascript">
+
+        var jsBox = document.getElementById("box");
+        var jsPic = document.getElementById("pic");
+        var jsLeft = document.getElementById("Left");
+        var jsRight = document.getElementById("Right");
+        var jsLisArr = document.getElementsByTagName("li");
+
+        //第一个li设置为黄色
+        jsLisArr[0].style.backgroundColor = "yellow";
+
+        //启动一个定时器去更换jsPic中的src属性
+        var currentPage = 0;
+        var time = setInterval(timer,1000)
+
+        function timer(){
+            currentPage++;
+            changePage();
+        }
+        function changePage(){
+            if(currentPage == 8){
+                currentPage = 0;
+            }else if(currentPage == 0){
+                currentPage = 7;
+            }
+            //清空所有小圆点的颜色
+            for(var i = 0; i < jsLisArr.length; i++){
+                jsLisArr[i].style.backgroundColor = "red";
+            }
+            jsLisArr[currentPage].style.backgroundColor = "yellow";
+            jsPic.src = "../img/"+currentPage+".jpg";
+         }
+
+        //鼠标进入box
+        //鼠标进入
+        jsBox.addEventListener("mouseover", overFunc, false)
+            function overFunc(){
+                //停止定时器
+                clearInterval(time)
+                //显示左右按钮
+                jsLeft.style.display = "block"
+                jsRight.style.display = "block"
+            }
+        //鼠标离开
+        jsBox.addEventListener("mouseout", outFunc, false)
+            function outFunc(){
+                //重启定时器
+                time = setInterval(timer, 1000)
+                //隐藏左右按钮
+                jsLeft.style.display = "none"
+                jsRight.style.display = "none"
+            }
+
+        //点击左右按钮
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,25 @@
+1、作用：
+模板继承可以减少⁮页面内容的重复定义，实现页面的重用
+
+1）block标签
+在父模板中预留区域，子模板去填充
+语法：
+	{% block 标签名%}
+	{% endblock 标签名%}
+
+2）extends标签
+继承模板，需要写在模板文件的第一行
+语法：
+	{%extends 父模板路径 %}
+
+示例：定义父模板
+第一子模板
+ {% block main %}
+
+ {% endblock main%}
+
+{% extends 'myApp/base.html'%}
+{% block main %}
+
+<h1>Hello World!</h1>
+{% endblock main%}

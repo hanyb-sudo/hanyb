@@ -1,0 +1,17 @@
+1、推送分支
+git push origin master
+
+git push origin hyb
+
+2、抓取分支
+从远程库clone时，默认只能看到master
+想在hyb分支上开发，就必须创建origin的hyb分支到本地
+git checkout -b hyb origin/hyb
+
+3、工作模式
+1）可以试图使用git push origin branch-name推送自己的修改
+2）如果推送失败，则因为远程分支比你的本地更新，需要先用git pull 试图合并
+3）如果合并有冲突，则解决冲突，并在本地提交
+4）如果有冲突或者解决冲突后，再用git push origin branch-name推送就能成功
+5）如果git pull 提示“no tracking information”,则说明本地分支和远程分支的链接没有创建，
+用命令git branch --set-upstream branch-name branch-name origin branch-name

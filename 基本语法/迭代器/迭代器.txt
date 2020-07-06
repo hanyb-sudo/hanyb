@@ -1,0 +1,15 @@
+迭代器：
+不但可以作用于for循环，还可以被next()函数不断调用并返回下一个值，
+直到最后抛出一个StopIteration错误表示无法继续返回下一个值。
+
+可以被next()函数调用并不断返回下一个值的对象称为迭代器(Iterator对象)
+
+可以使用一个对象是否是Iterator对象
+
+转成Iterator对象：
+iter(source, sentinel=None):当传入了第二个参数时，将一直迭代直到当返回sentinel时
+x=iter(list/tuple/string/dict)
+next(x)
+
+
+

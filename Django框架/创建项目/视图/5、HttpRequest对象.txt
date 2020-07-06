@@ -1,0 +1,73 @@
+1、概述：
+服务器接收http请求后，会根据报文创建HttpRequest对象
+视图的第一个对象就是HttpRequest对象
+django创建的，之后调用视图时传递给视图
+
+2、属性：
+path	请求的完整路径(不包括域名和端口)
+method	表示请求的方式，常用的有GET、POST
+encoding	表示浏览器提交的数据的编码方式，一般为utf-8
+GET	类似字典的对象，包含了get请求的所有参数
+POST	类似字典的对象，包含了post请求的所有参数
+FILES	类似字典的对象，包含了所有上传的文件
+COOKIES	字典，包含所有的cookie
+session	类似字典的对象，表示当前会话
+
+3、方法：
+is_ajax()	如果是通过XMLHttpRequest发起的，返回True
+
+4、QuertDict对象
+request对象中的GET、POST都属于QueryDict对象
+方法：
+	get()
+	    作用：根据键获取值
+	    只能获取一个值
+	    www.hanyb.wang/abc?a=1&b=2&c=3
+	getlist()
+	    将键的值以列表的形式返回
+	    可以获取多个值
+
+5、GET属性
+配urls.py文件
+    re_path(r'^get1/$', views.get1),
+    re_path(r'^get2/$', views.get2),
+获取浏览器传递过来给服务器的数据
+1）http://127.0.0.1:8000/hanyb/get1?b=2&a=4&c=8
+	def get1(request):
+   	a = request.GET.get("a")
+    	b = request.GET.get('b')
+    	c = request.GET.get('c')
+    	return HttpResponse("a = %s  b = %s  c = %s"%(a,b,c))
+2）http://127.0.0.1:8000/hanyb/get2?a=2&a=4&c=8
+	def get2(request):
+    	a = request.GET.getlist("a")
+    	a1 = a[0]
+    	a2 = a[1]
+    	c = request.GET.get('c')
+    	return HttpResponse("a1 = %s  a2 = %s  c = %s" % (a1, a2, c))
+
+6、POST属性
+使用表单提交实现post请求
+
+关闭csrf：
+MIDDLEWARE = [
+    'django.middleware.security.SecurityMiddleware',
+    'django.contrib.sessions.middleware.SessionMiddleware',
+    'django.middleware.common.CommonMiddleware',
+    # 'django.middleware.csrf.CsrfViewMiddleware',
+    'django.contrib.auth.middleware.AuthenticationMiddleware',
+    'django.contrib.messages.middleware.MessageMiddleware',
+    'django.middleware.clickjacking.XFrameOptionsMiddleware',
+]
+
+获取POST的数据
+def showreg(request):
+    return render(request, 'myApp/register.html')
+
+def reg(request):
+    name = request.POST.get("name")
+    gender = request.POST.get("gender")
+    age = request.POST.get("age")
+    hobby = request.POST.getlist("hobby")
+
+    return HttpResponse("注册成功！name =%s   gender =%s  age =%s   hobby =%s "%(name, gender, age, hobby))

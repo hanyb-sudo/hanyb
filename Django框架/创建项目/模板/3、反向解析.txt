@@ -1,0 +1,21 @@
+关于Django Specifying a namespace in include() without providing an app_name
+解决方法：
+在app/urls.py中修改
+from django.urls import path
+from .views import index
+app_name='common'
+urlpatterns = [
+    path('',index,name='index'),
+]
+
+步骤如下：
+1、path('hanyb/', include('myApp.urls', namespace = "app")),
+
+2、from . import views
+from django.urls import path,re_path
+#导入正则地址re_path
+app_name = "app"
+
+3、re_path(r"^good/(\d+)/(\d+)$", views.good, name = "good"),
+
+4、<a href="{% url 'app:good' 1 2%}">链接</a>

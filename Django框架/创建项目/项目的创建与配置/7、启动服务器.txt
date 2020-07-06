@@ -1,0 +1,7 @@
+格式：
+python manage.py runserver ip:port
+ip可以不写，不写的话代表本机ip
+端口号默认是8000
+python manage.py runserver
+
+说明：这是一个纯Python写的轻量级web服务器，仅仅在开发测试中使用

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>事件</title>
+    <link rel="stylesheet" type="text/css" href="../css/style1.css"/>
+</head>
+<body style="height:3000px;">
+    <div id="box1" onclick="func(this)"></div>
+
+    <div id="box2"></div>
+    <div id="box3"></div>
+
+<!--
+事件：就是用户或者是浏览器执行的某种动作
+事件处理程序就是响应事件的函数，事件处理程序的名字是以“on”开头的
+1、直接在html标签中给与事件处理程序同名的属性赋值
+2、给与事件处理程序同名的属性赋值一个函数调用语句，使HTML代码与JS代码稍微有点儿分离，不至于第一种那么紧密耦合。
+<div id="box1" onclick="func(this)"></div>:this代表的是该div标签对象
+3、DOM0级事件处理程序，这种方式也是早期的写法，但好处是可以将JS与HTML完全分离，前提是需要给HTML元素提供一个额外的id属性
+4、DOM2级事件处理程序，是目前最流行的事件处理程序，各大主流浏览器全部支持
+
+添加事件监听器
+元素节点.addEventListener("事件名", 响应事件的函数, 布尔值)
+事件名 click mouseover mouseout
+函数名或者匿名函数
+事件流 false
+
+能否使用this，this代表的谁？
+1、在标签中使用，代表的是标签本身
+2、在函数体中直接使用，代表的是window
+    在标签中将this作为实参传递到函数中，在函数体中使用形参代表标签本身
+3、在事件函数中使用，代表标签本身
+4、在事件函数中使用，代表标签本身（addEventListener("click",function(){this},false)）
+-->
+    <script type="text/javascript">
+    //添加事件的方式
+        //第一种
+        function func(self){
+        self.style.backgroundColor = "black"
+            alert("you are a good man")
+        }
+
+        //第二种
+        var div2 = document.getElementById("box2")
+        div2.onclick = function(){
+        alert("I'm a good man")
+        }
+        div2.onclick = function(){
+        alert("I'm a good man2")
+        }
+        //清除事件
+        div2.onclick = null;
+
+        //第三种
+        //事件相互之间会影响
+        var div3 = document.getElementById("box3")
+        div3.addEventListener("click", function(){
+        alert("we are all a good man")
+        }, false)
+        function f(){
+        alert("we are all a good man2")
+        }
+        div3.addEventListener("click", f, false);
+        //清除事件
+        div3.removeEventListener("click", f, false);//清除事件不能用匿名函数
+    </script>
+
+</body>
+</html>

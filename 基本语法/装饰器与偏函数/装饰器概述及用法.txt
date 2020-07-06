@@ -1,0 +1,47 @@
+概念：是一个闭包，把一个函数当做参数返回一个替代版的函数，
+本质上就是返回函数的函数
+
+简单的装饰器：
+ex:
+def func1():
+	print("hello world!")
+
+def outer(func):
+	def inner():
+		print("*******")
+		func()
+	return inner
+f=outer(func1)
+
+
+复杂的装饰器：
+ex：
+def say(age):
+    print("Han is %d years old!"%(age))
+
+def outer(func):
+    def inner(age):
+        if age<0:
+            age=0
+        func(age)
+    return inner
+
+say=outer(say)
+say(-10)
+
+通用的装饰器：
+def outer(func):
+    def inner(*args,**kwargs):
+        #添加修改的功能
+
+        func(*args,**kwargs)
+    return inner
+
+@outer     #相当于执行say=outer(say)语句
+def say(name,age,hight):
+    print("My name is %s, I'm %d years old, and I'm %.1f meters high!"%(name,age,hight))
+
+say("han",13,1.7)
+
+
+

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" type="text/css" href="../css/style1.css"/>
+</head>
+<body style="height:3000px;">
+    <div id="box1">
+        <p>我是第一个p</p>
+        <p>我是第二个p</p>
+        <p>我是第三个p</p>
+        <p>我是第四个p</p>
+    </div>
+    <div id="box2"></div>
+    <div id="box3"></div>
+    <input id="put" type="text" name="in" placeholder="hanyb is a good man">
+
+    <script type="text/javascript">
+        var jsDiv1 = document.getElementById("box1")
+        var jsDiv2 = document.getElementById("box2")
+        var jsDiv3 = document.getElementById("box3")
+        var jsInput = document.getElementById("put")
+        var s = jsInput.placeholder
+
+        //console.log(jsDiv1.nodeName, jsDiv1.nodeType, jsDiv1.nodeValue)
+
+        //1、获取子节点
+        var allChilds = jsDiv1.childNodes;
+        console.log(allChilds)
+        //删除所有子节点中的文本节点
+        for(var i = allChilds.length - 1; i >= 0; i--) {
+        if(allChilds[i].nodeType == 3){
+            jsDiv1.removeChild(allChilds[i])
+        }
+        }
+        console.log(allChilds)
+        //2、获取当前元素节点的第一个子节点
+        var firstChildNode = jsDiv1.firstChild;
+        console.log(firstChildNode)
+        //3、获取当前元素的最后一个子节点
+        var lastChildNode = jsDiv1.lastChild;
+        console.log(lastChildNode)
+        //4、获取该节点的文档的根节点，相当于document
+        var rootNode = jsDiv1.ownerDocument;
+        console.log(rootNode)
+        //5、获取当前节点的父节点
+        var parentNode = jsDiv1.parentNode;
+        console.log(parentNode)
+        //6、获取当前节点的前一个同级节点
+        var previousNode = jsDiv2.previousSibling;
+        console.log(previousNode)
+        //7、获取当前节点的后一个同级节点
+        var nextNode = jsDiv2.nextSibling;
+        console.log(nextNode)
+        //8、获取当前节点的所有属性节点
+        var jsInput = document.getElementById("put");
+        var allAttributesArray = jsInput.attributes;
+        console.log(allAttributesArray)
+    </script>
+</body>
+</html>

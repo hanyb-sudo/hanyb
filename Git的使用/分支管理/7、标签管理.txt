@@ -1,0 +1,27 @@
+1、意义
+发布一个版本时，我们通常先在版本库中打一个标签，这样，
+就唯一确定了打标签时刻的版本。将来无论什么时候，取某个
+标签的版本，就是把那个打标签的时刻的历史版本取出来，所以，
+标签也是一个版本的快照。
+
+2、git tag 标签名             打标签
+
+3、git tag        查看所有标签
+
+4、git tag 标签名 commitID            指定commit id打标签
+
+5、git tag -a 标签名 -m  "标签信息"         指定标签信息
+
+6、git checkout 标签名           切换到指定标签
+
+7、git show 标签名       查看文字说明
+
+8、git tag -d 标签名       刷新标签
+
+9、git push origin 标签名     推送标签到远程
+
+10、git push origin --tags         一次性推送前部尚未推送到远程的本地标签
+
+11、删除已经推送到远程的标签
+	先从本地删除	git tag -d 标签名
+	再从远程删除	git push origin :refs/tags/标签名

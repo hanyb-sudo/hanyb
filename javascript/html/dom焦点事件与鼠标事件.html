@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>焦点事件</title>
+</head>
+<body style="height:3000px;">
+    <input type="text" id="in" value="">
+    <div id="div" style="height:100px;width:100px;background-color:red;">鼠标点击事件</div>
+    <ul>
+        <li>鼠标进入变红色</li>
+        <li>鼠标离开变蓝色</li>
+        <li>鼠标按下字体变大2倍</li>
+        <li>鼠标抬起字体变小2倍</li>
+    </ul>
+
+    <script type="text/javascript">
+    //焦点事件：一般用于文本框上
+    /*
+        var inP = document.getElementById("in")
+        inP.addEventListener("focus", function(){
+            console.log("聚焦事件")
+        },false)
+
+        inP.addEventListener("blur", function(){
+            console.log("离焦事件")
+        },false)
+    */
+    /*
+    //鼠标点击事件
+    //单击、双击冲突
+        var div = document.getElementById("div");
+        var time;
+
+        div.addEventListener("click", function(){
+            clearTimeout(time)
+            time = setTimeout(function(){
+            console.log("鼠标单击事件")
+            },300)
+        },false)
+
+        div.addEventListener("dblclick", function(){
+            clearTimeout(time)
+            console.log("鼠标双击事件")
+        },false)
+    */
+    //鼠标事件
+        var lis = document.getElementsByTagName("li")
+
+        for(var i = 0; i < lis.length; i++ ){
+            lis[i].addEventListener("mouseover",function(){
+                this.style.backgroundColor = "red"
+            },false)
+
+            lis[i].addEventListener("mouseout",function(){
+                this.style.backgroundColor = "blue"
+            },false)
+
+            lis[i].addEventListener("mousedown",function(){
+                this.style.fontSize = parseInt(getComputedStyle(this,null).fontSize) * 2 +"px"
+            },false)
+
+            lis[i].addEventListener("mouseup",function(){
+                this.style.fontSize = parseInt(getComputedStyle(this,null).fontSize) / 2 +"px"
+            },false)
+        }
+
+        var div = document.getElementById("div");
+       //鼠标移动事件
+       div.addEventListener("mousemove",function(){
+       console.log("鼠标在移动")
+       })
+    </script>
+</body>
+</html>

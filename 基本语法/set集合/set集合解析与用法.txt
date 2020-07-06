@@ -1,0 +1,35 @@
+set：类似dict，是一组key的集合，不存储value
+
+本质：无序和无重复元素的集合
+          set集合没有索引
+
+创建：
+创建set需要一个list或者tuple或者dict作为输入集合
+重复元素在set中会自动过滤
+set1=set(list/tuple/dict)
+
+添加：
+set.add(key)
+可以添加重复的，但是不会有效果
+add不能直接添加一个列表和字典，因为列表和字典是可变的
+set.update(list/tuple)
+插入整个list、tuple、字符串，打碎插入
+
+删除：
+set.remove(key)
+根据元素进行删除
+
+遍历：
+for key in set:
+    print(key)
+set没有索引
+
+交集：
+set3=set1 & set2
+
+并集：
+set4=set5 | set6
+
+
+
+

@@ -1,0 +1,38 @@
+1、创建分支
+git branch  分支名
+
+2、切换分支
+git checkout 分支名
+
+3、创建与切换同时进行
+git checkout  -b  分支名
+
+4、查看当前分支
+git branch
+	会列出所有分支
+	当前分支前面会有一个*号
+
+5、在hyb分支上修改sunck.txt文件（添加些内容），并提交
+
+6、切换到master分支
+	git checkout master
+	添加的内容不存在
+	因为是在hyb分支提交的
+
+7、把hyb分支的工作成果合并到master分支上
+在master分支上输入
+git merge hyb
+
+8、删除分支
+git branch -d 分支名
+
+9、删除远程分支
+git push origin :分支名
+
+gti push origin --delete 分支名
+
+10、解决冲突
+手动解决
+
+11、git log --graph    查看分支合并图
+

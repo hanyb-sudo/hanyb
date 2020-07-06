@@ -1,0 +1,8 @@
+return render(request, 'myApp/students.html', {"code":"<h1>good man</h1>"})
+ {{code}}
+将接收到的code当成HTML代码渲染
+    1）{{code|safe}}
+
+    2）{% autoescape off %}#关闭自动转义
+    {{code}}
+    {% endautoescape %}

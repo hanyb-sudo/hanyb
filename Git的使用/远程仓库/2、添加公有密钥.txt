@@ -1,0 +1,8 @@
+1、进入ssh所在的目录
+
+2、cat id_rsa.pub获取公钥
+
+3、将公钥复制到github上的设置中的SSH and GPG keys中去
+
+4、输入ssh -T git@github.com建立连接
+

@@ -1,0 +1,8 @@
+1、生成迁移文件
+在myProject的project目录下执行以下命令
+执行<python manage.py makemigrations>
+在migrations目录下生成一个迁移文件，此时数据库中还没有生成表
+
+2、执行迁移
+执行<python manage.py migrate>
+相当于执行sql语句创建数据表

@@ -1,0 +1,15 @@
+1、工作区
+	仓库所在目录
+
+2、版本库
+	.git目录是Git的版本库
+		暂存区（state）
+		自动创建的一个分支（master）
+		指向master的指针（HEAD）
+
+3、git checkout --hanyb.txt
+	1.如果filename文件自修改后还没有被放到暂存区，
+	    现在，撤销修改就会回到和版本库一模一样的状态。
+	2.如果filename文件已经添加到暂存区后，又做了修改，
+	    现在，撤销修改就回到暂存区后的状态。
+	3.总之，就是让这个filename文件回到最后一次git commit或者git add 时的状态。

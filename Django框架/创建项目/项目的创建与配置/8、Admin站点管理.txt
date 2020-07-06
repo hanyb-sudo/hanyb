@@ -1,0 +1,66 @@
+概述：
+内容发布：负责添加、修改、删除内容
+公告访问：
+
+配置Admin应用：
+在settings.py文件中的INSTALLED_APPS中添加'django.contrib.admin'，默认是已经添加好了的
+
+创建管理员用户
+<python manage.py createsuperuser>
+依次输入用户名  邮箱  密码
+
+汉化：
+在settings.py文件下改变以下变量：
+LANGUAGE_CODE = 'zh-Hans'
+TIME_ZONE = 'Asia/Shanghai'
+
+管理数据表：
+修改admin.py文件
+from .models import Grades,Student
+#注册
+admin.site.register(Grades)
+admin.site.register(Student)
+
+属性说明：
+自定义管理页面：
+#列表页属性
+list_display ：显示字段
+list_filter ：过滤字段
+search_fields ：搜索字段
+list_per_page ：分页
+    
+#添加、修改页属性
+fields ：可以规定属性的先后顺序
+fieldsets ：给属性分组
+注意：fields与fieldsets不能同时使用
+
+关联对象：
+需求：在创建一个班级时可以直接添加几个学生
+class StudentsInfo(admin.TabularInline):    #admin.StackedInline
+    model = Student
+    extra = 2
+class GradeAdmin(admin.ModelAdmin):
+    inlines = [StudentsInfo]
+
+布尔值显示问题：
+    def gender(self):
+        if self.sgender:
+            return "男"
+        else:
+            return "女"
+    # 设置页面列的名称
+    gender.short_description = "性别"
+    #列表页属性
+    list_display = ['pk', 'sname', gender, 'sage', 'scontend', 'isDelete']（在列表中传入函数名称）
+
+执行动作位置
+#执行动作的位置
+actions_on_bottom = True
+actions_on_top = False
+
+
+注意：在以后开发中，都是使用装饰器完成注册
+eg：
+@admin.register(Student)
+class StudentAdmin(admin.ModelAdmin):
+     pass

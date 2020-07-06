@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" type="text/css" href="../css/style.css"/>
+</head>
+<body style="height:3000px;">
+<div id="idDiv"></div>
+
+<div class="classDiv"></div>
+<div class="classDiv"></div>
+<div class="classDiv"></div>
+<div class="classDiv"></div>
+
+<input type="text" name="inputText">
+<input type="text" name="inputText">
+<input type="text" name="inputText">
+
+<input type="text" id="in" placeholder="请留下你的大名！" my="我的">
+<div id="ymp">
+    我是严茂萍
+</div>
+
+<div id="box"></div>
+<button onclick="changeColor()">换颜色</button>
+<!--
+<script type="text/javascript">
+    //找到要操作的div对象
+    var jsDiv = document.getElementById("idDiv")
+    console.log(jsDiv)
+    console.log(typeof(jsDiv))
+
+    //根据class获取标签集合
+    var jsDivs = document.getElementsByClassName("classDiv")
+    jsDivs[0].innerHTML = "Hello!"
+    console.log(jsDivs)
+    console.log(typeof(jsDivs))
+
+    var jsInputs = document.getElementsByName("inputText")
+    console.log(jsInputs)
+    console.log(typeof(jsInputs))
+
+    var jsAllDiv = document.getElementsByTagName("div")
+    console.log(jsAllDiv)
+    console.log(typeof(jsAllDiv))
+
+    //获取标签的属性
+    //方法一：
+    //获取官方定义的属性直接使用 元素节点.属性名
+    var jsInput = document.getElementById("in")
+    console.log(jsInput.placeholder)
+
+    //方法二：
+    //元素节点.getAttribute("属性名")
+    //得到元素对应属性的属性值
+    //注意：该方法还可以获取自定义属性
+    var myNode = jsInput.getAttribute("my")
+    console.log(myNode)
+    //修改元素对应属性的属性值或者增加
+    //元素节点.setAttribute("属性名","新的属性名")
+    jsInput.setAttribute("my", "myValue")
+    console.log(jsInput)
+
+    //移除属性节点
+    jsInput.removeAttribute("my")
+    console.log(jsInput)
+</script>
+
+<script type="text/javascript">
+    //获取文本节点
+    var jsText = document.getElementById("ymp")
+    console.log(jsText.innerHTML)//开始标签和结束标签中间的内容
+    console.log(jsText.outerHTML)//包括开始和结束标签
+    console.log(jsText.innerText)//只包含中间的内容
+    //替换掉文本中的内容
+    jsText.innerHTML = "<h1>Hello!</h1>"
+</script>
+
+//赋值
+<script type="text/javascript">
+    var jsBox = document.getElementById("box")
+    //换颜色
+    function changeColor(){
+    //backgroundColor--background-color
+    //console.log(parseInt(Math.random()*(y - x + 1) + x))
+    //jsBox.style.backgroundColor = "blue"
+    //随机换颜色
+
+    var a = parseInt(Math.random()*(200 - 0 + 1) + 0)
+    var b = parseInt(Math.random()*(200 - 0 + 1) + 0)
+    var c = parseInt(Math.random()*(200 - 0 + 1) + 0)
+    jsBox.style.backgroundColor = "rgb("+a+","+b+","+c+")"
+    //jsBox.style.width ="200px"
+    jsBox.style.left = "200px";
+    }
+</script>
+-->
+
+//取值
+<script type="text/javascript">
+    var jsBox = document.getElementById("box")
+    //获取样式，引进样式时不能通过jsBox.style.backgroundColor获取
+    var c = window.getComputedStyle(jsBox, null)["backgroundColor"]
+    console.log(c)
+</script>
+</body>
+</html>

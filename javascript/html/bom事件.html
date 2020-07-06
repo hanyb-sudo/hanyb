@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script type="text/javascript">
+    window.onload = function(){
+    //当页面完全加载成功触发该事件，只能写一个，多了就覆盖了
+    alert("页面加载成功！")
+    }
+    window.onunload = function(){
+    alert("确认关闭？")
+    }
+    alert("???")
+</script>
+<script type="text/javascript">
+    //滚动时触发的事件
+    window.onscroll = function(){
+    var height = document.documentElement.scrollTop || document.body.scrollTop
+    console.log(height)
+    //console.log("发生了滚动事件")
+    }
+</script>
+<script type="text/javascript">
+    //窗体发生变化时触发的事件
+    window.onresize = function(){
+    w = document.documentElement.clientWidth || document.body.clientWidth || window.innerWidth;
+    h = document.documentElement.clientHeight || document.body.clientHeight || window.innerHeight;
+    console.log(w, h)
+    }
+</script>
+
+</body>
+</html>

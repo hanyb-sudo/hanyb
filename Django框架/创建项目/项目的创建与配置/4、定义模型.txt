@@ -1,0 +1,27 @@
+概述：有一个数据表，就对应有一个模型
+
+在models.py文件中定义模型：
+引入from django.db import models
+模型类要继承models.Model类
+class Grades(models.Model):
+    gname = models.CharField(max_length=20)
+    gdate = models.DateTimeField()
+    ggirlnum = models.IntegerField()
+    gboynum = models.IntegerField()
+    isDelete = models.BooleanField()
+
+说明：不需要定义主键，在生成时自动添加，并且值为自动增加
+注意：#关联外键，实现多对一关联时，要加上on_delete 参数
+    sgrade = models.ForeignKey("Grades")
+
+on_delete=None,               # 删除关联表中的数据时,当前表与其关联的field的行为
+on_delete=models.CASCADE,     # 删除关联数据,与之关联也删除
+on_delete=models.DO_NOTHING,  # 删除关联数据,什么也不做
+on_delete=models.PROTECT,     # 删除关联数据,引发错误ProtectedError
+# models.ForeignKey('关联表', on_delete=models.SET_NULL, blank=True, null=True)
+on_delete=models.SET_NULL,    # 删除关联数据,与之关联的值设置为null（前提FK字段需要设置为可空,一对一同理）
+# models.ForeignKey('关联表', on_delete=models.SET_DEFAULT, default='默认值')
+on_delete=models.SET_DEFAULT, # 删除关联数据,与之关联的值设置为默认值（前提FK字段需要设置默认值,一对一同理）
+on_delete=models.SET,         # 删除关联数据,
+a. 与之关联的值设置为指定值,设置：models.SET(值)
+b. 与之关联的值设置为可执行对象的返回值,设置：models.SET(可执行对象)

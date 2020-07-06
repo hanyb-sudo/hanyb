@@ -1,0 +1,12 @@
+1、黑屏终端输入 ssh-keygen -t rsa -C "你自己GitHub的注册邮箱"
+
+2、记录.ssh目录位置
+
+3、进入.ssh的目录
+
+4、输入GitHub注册密码（注意：密文输入，黑屏终端不会显示密码）
+
+5、.ssh
+	id_rsa     私钥
+	id_rsa.pub     公钥
+

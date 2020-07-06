@@ -1,0 +1,36 @@
+1、概述：
+文件上传时，文件数据存储在request.FILES属性中
+注意：form表单要上传文件需要加 enctype="multipart/form-data"
+注意：上传文件必须是post请求
+
+2、存储路径：
+在static目录下创建upfile目录用于存储接收上传的文件
+配置setting.py文件
+	MDEIA_ROOT = os.path.join(BASE_DIR, r'static\upfile')
+模板：
+<body>
+    <form method="post" action="/hanyb/savefile/" enctype="multipart/form-data">
+        {% csrf_token %}
+        <input type="file" name="file">
+        <input type="submit" value="上传">
+    </form>
+</body>
+
+视图：
+import os
+from django.conf import settings
+def upfile(request):
+    return render(request, 'myApp/upfile.html')
+#保存文件
+def savefile(request):
+    if request.method == 'POST':
+        f = request.FILES["file"]
+        #合成文件在服务端的路径
+        filePath = os.path.join(settings.MDEIA_ROOT, f.name)
+        #分段读取上传的文件，并写入文件夹
+        with open(filePath, "wb") as fp:
+            for info in f.chunks():
+                fp.write(info)
+        return HttpResponse("上传成功！")
+    else:
+        return HttpResponse("上传失败！")

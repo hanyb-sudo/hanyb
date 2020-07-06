@@ -1,0 +1,17 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>首页</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'myApp/css/style.css' %}">
+    <script type="text/javascript" src="{% static 'myApp/js/jquery-3.1.1.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'myApp/js/hanyb.js' %}"></script>
+</head>
+<body>
+    <h1>首页</h1>
+    <a href="/hanyb/students/">学生信息</a><hr>
+    <a href="{% url 'app:good' 1 2%}">链接</a>
+    <img src="{% static 'myApp/img/girl.jpg' %}">
+</body>
+</html>

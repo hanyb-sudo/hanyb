@@ -1,0 +1,20 @@
+在一个项目中可以创建多个应用，每个应用进行一种业务处理
+
+打开黑屏终端，进入myProject下的project目录
+
+执行<python manage.py startapp myApp(应用名)>
+Django3 中遇到django.core.exceptions.ImproperlyConfigured mysqlclient 1.3.13 or newer is required; you have 0.9.3.异常的解决方案：
+https://yuntianti.com/posts/fix-django3-mysqlclient-import-error/
+
+myApp目录说明：
+admin.py：站点配置
+models.py：模型
+views.py：视图
+
+激活应用：
+在settings.py文件中，将myAPP应用加入到INSTALLED_APPS中   'myAPP',
+
+
+
+Django3.0文档：
+https://docs.djangoproject.com/zh-hans/3.0/

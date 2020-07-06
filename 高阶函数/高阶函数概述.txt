@@ -1,0 +1,21 @@
+什么是高阶函数？
+　　高阶函数：一个函数可以作为参数传给另外一个函数，
+或者一个函数的返回值为另外一个函数（若返回值为该函数本身，则为递归），
+满足其一则为高阶函数。
+#参数为函数
+def bar():
+    print("in the bar..")
+def foo(func):
+    func()
+    print("in the foo..")
+
+foo(bar)
+
+#返回值为函数
+def bar():
+    print("in the bar..")
+def foo(func):
+    print("in the foo..")
+    return bar
+res=foo(bar)
+res()

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="div" style="height:100px;width:100px;background-color:red;"></div>
+    <script type="text/javascript">
+    /*
+    //键盘事件
+        document.addEventListener("keydown", function(){
+            var event =window.event || e
+           //console.log(event)
+            console.log(event.altKey, event.ctrlKey, event.shiftKey, event.key, event.keyCode)
+        },false)
+
+        document.addEventListener("keyup", function(){
+            var event =window.event
+            console.log(event.altKey, event.ctrlKey, event.shiftKey, event.key, event.keyCode)
+        },false)
+     */
+
+     //鼠标事件
+     var div = document.getElementById("div")
+     div.addEventListener("click", function(){
+            var evt =window.event || e
+           console.log(evt)
+           //浏览器可视窗口坐标
+           console.log(evt.clientX, evt.clientY)
+
+           //页面坐标
+           console.log(evt.pageX, evt.pageY)
+
+           //电脑屏幕坐标
+           console.log(evt.screenX, evt.screenY)
+
+        },false)
+    </script>
+</body>
+</html>

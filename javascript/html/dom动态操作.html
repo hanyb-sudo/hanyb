@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" type="text/css" href="../css/style1.css"/>
+</head>
+<body style="height:3000px;">
+    <div id="box">
+        <p>1</p>
+        <p>2</p></div>
+    <button onclick="createText()">创建一个文本框</button>
+    <button onclick="deleteText()">删除文本框</button>
+
+    <script type="text/javascript">
+    var div = document.getElementById("box");
+        //创建标签
+        var a = document.createElement("p")
+        a.innerHTML = "你好！"
+        a.style.backgroundColor = "red";
+        //console.log(a)
+        /*
+        //div.appendChild(a)
+        //插入到1，2中间
+        div.insertBefore(a, div.lastChild)
+        var inP = document.createElement("input")
+        */
+        function createText(){
+        //自动插入到最后
+        div.appendChild(inP)
+        }
+        function deleteText(){
+        div.removeChild(inP)
+        }
+        /*
+        //创建文本节点
+        var jsStr = document.createTextNode("????")
+        //添加文本节点
+        var js2P = div.childNodes[1]
+        js2P.appendChild(jsStr)
+
+
+        //替换节点
+        //父节点.replaceChild(新节点，子节点)
+        //将父节点中的某个子节点替换成新节点
+        div.replaceChild(a, div.lastChild)
+        */
+
+        //复制节点
+        var jsD1 = div.cloneNode();//只复制本身
+        console.log(jsD1)
+        var jsD2 = div.cloneNode(true);//复制本身和子节点
+        console.log(jsD2)
+        div.parentNode.appendChild(jsD2)
+
+        //删除节点
+        //父节点.removeChild(子节点)
+        //删除父节点下的对应子节点
+        div.parentNode.removeChild(jsD2)
+    </script>
+</body>
+</html>

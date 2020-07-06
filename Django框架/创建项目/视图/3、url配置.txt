@@ -1,0 +1,38 @@
+1、配置流程：
+1）指定根级url配置文件
+setting.py文件中的  ROOT_URLCONF = 'project.urls'	默认实现了
+
+2）urlpatterns
+一个url实例的列表
+urlpath对象(正则表达式， 视图名称， 名称 )
+
+3）url匹配正则的注意事项
+	1.如果想要从url中获取一个值，需要对正则加小括号
+	2.匹配正则前方不需要加反斜杠
+	3.正则前需要加r表示字符串不转义
+
+2、引入其他url配置
+1）在应用中创建urls.py文件，定义本应用的url配置，在工程urls.py文件中使用include()方法
+urlpatterns = [
+    path('admin/', admin.site.urls),
+    path('', include('myApp.urls'), namespace="myApp"),
+]
+
+from django.urls import path,re_path
+#导入正则地址re_path
+urlpatterns = [
+    path(r'', views.index),
+    re_path(r'^(\d+)/$', views.detial1),
+]
+
+2）匹配过程
+
+3、url的反向解析
+1）概述：
+如果在视图、模板中使用了硬编码链接，在url配置发生改变时，动态生成链接的地址
+
+2）解决：
+在使用时，通过url配置的名称，动态生成url地址
+
+3）作用：
+使用url模板

@@ -1,0 +1,60 @@
+String方法：
+
+split(str=""，num)
+以str为分隔符截取字符串，指定num，则仅截取num个字符串
+
+splitlines(keepends)  
+按照（'\r', '\r\n', '\n'）分隔，返回每一行的数据
+keepends==True  会保留换行符
+
+join(seq) 
+以指定的字符串分隔符，将seq中的所有元素组合成一个字符串
+
+replace(oldstr, newstr count)
+用newstr替换oldstr，默认是全部替换。如果指定了count，那么只替换了count个
+
+startswith(str，start=0, end=len(str))
+判断字符串是以什么开头，正确则为True，否则为False
+
+endswith(str，start=0, end=len(str))
+判断字符串是以什么结尾，正确则为True，否则为False
+
+data=encode(encoding="utf-8", errors="strict") #errors的常见值有ignore，不对错误进行处理
+编码
+
+data.decode("utf-8")
+解码   注意：要与编码时的编码格式一致
+
+isalpha()
+如果字符串中至少有一个字符且所有的字符都是字母返回True，否则False
+
+isalnum()
+如果字符串中至少有一个字符且所有的字符都是字母或者数字返回True，否则False
+
+isupper()
+如果字符串中至少有一个英文字符且所有的英文字符都是大写的英文字母返回True，否则False
+
+islower()
+如果字符串中至少有一个英文字符且所有的英文字符都是小写的英文字母返回True，否则False
+
+istitle()
+如果字符串是标题化的返回True，否则返回False
+
+isdigit()
+如果字符串中只包含数字字符返回True，否则返回False
+
+isnumeric()
+如果字符串中只包含数字字符返回True，否则返回False
+
+isdecimal()
+字符串中只包含十进制字符
+
+isspace()
+如果字符串中只包含空格则返回True，否则False
+
+
+
+
+
+
+

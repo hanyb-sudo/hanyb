@@ -1,0 +1,11 @@
+datetime比time高级不少，可以理解为datetime基于time进行了封装，
+   提供了更容易使用的函数，datetime模块的接口更直观，更容易调用
+
+模块中的类：
+datetime：  同时有时间和日期
+timedelta：  主要用于计算时间的跨度
+tzinfo：  时区相关的转换
+time：  只关注时间
+date：  只关注日期
+
+

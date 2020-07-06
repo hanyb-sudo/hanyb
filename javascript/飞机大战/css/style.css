@@ -1,0 +1,39 @@
+*{
+    margin:0;
+    padding:0;
+}
+
+#mainScreen{
+    width:512px;
+    height:576px;
+    margin:0 auto;
+    position:relative;
+    overflow:hidden;
+}
+
+.bg{
+    width:512px;
+    height:576px;
+    position:absolute;
+    background-image:url(../img/background.jpg);
+}
+
+#bg2{
+    top:-576px;
+}
+
+#plane{
+    width:80px;
+    height:90px;
+    position:absolute;
+    left:220px;
+    top:485px;
+}
+
+.tank{
+    width:40px;
+    height:40px;
+    position:absolute;
+    background-image:url(../img/tank.png);
+    background-size:40px 40px;
+}

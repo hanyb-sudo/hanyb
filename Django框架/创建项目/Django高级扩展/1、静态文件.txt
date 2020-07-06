@@ -1,0 +1,24 @@
+css、js、图片、json文件、字体文件等
+
+配置setting.py文件
+STATIC_URL = '/static/'
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, 'static')   
+]
+
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>首页</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'myApp/css/style.css' %}">
+    <script type="text/javascript" src="{% static 'myApp/js/jquery-3.1.1.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'myApp/js/hanyb.js' %}"></script>
+</head>
+<body>
+    <h1>首页</h1>
+    <img src="{% static 'myApp/img/girl.jpg' %}">
+</body>
+</html>
+

@@ -1,0 +1,48 @@
+问题：
+1.用户发起request，并且等待response返回，但是在视图中有一些耗时的操作，
+导致用户可能会等待很长时间才能接收response，这样用户体验很差
+2.网站每隔一段时间要同步一次数据，但是http请求是需要触发的
+
+解决：
+celery来解决
+	将耗时的操作放入celery中执行
+	使用celery定时执行
+
+celery：
+1）任务task
+	本质是一个python函数，将耗时操作封装成一个函数
+
+2）队列queue
+	要将执行的任务放到队列里
+
+3）工人worker
+	负责执行队列中的任务
+
+4）代理broker
+	负责调度，在部署环境中使用redis
+
+1、安装celery
+pip install celery
+pip install celery-with-redis
+pip install django-celery
+
+2、配置settings.py
+INSTALLED_APPS = ['djcelery',]
+#celery
+import djcelery
+djcelery.setup_loader()#初始化
+BROKER_URL='redis://hanyb@127.0.0.1:6379/0'
+CELERY_IMPORTS=('myApp.task')
+
+3、在应用目录下创建task.py文件
+
+4、迁移，生成celery需要的数据库表
+python manage.py migrate
+
+5、在project目录下创建celery.py文件
+
+6、在project目录下的__init__.py文件中添加
+	from .celery import app as celery_app
+
+
+
